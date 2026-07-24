@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Manager</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container py-5">
+      <div class="card shadow-lg p-4">
+        <h2 class="text-center mb-4">Task Manager</h2>
+        <div class="mb-3">
+          <input
+            type="text"
+            class="form-control"
+            id="search"
+            placeholder="Search Task..."
+            onkeyup="searchTask()"
+          />
+        </div>
+        <input type="hidden" id="taskId" />
+        <div class="mb-3">
+          <input
+            type="text"
+            id="title"
+            class="form-control"
+            placeholder="Task Title"
+          />
+        </div>
+
+        <div class="mb-3">
+          <input type="date" id="date" class="form-control" />
+        </div>
+        <div class="mb-3">
+          <textarea
+            id="description"
+            class="form-control"
+            rows="3"
+            placeholder="Task Description"
+          ></textarea>
+        </div>
+
+        <div class="d-flex gap-2 mb-4">
+          <button class="btn btn-primary w-100" onclick="addTask()">
+            Save Task
+          </button>
+
+          <button class="btn btn-danger" onclick="clearAll()">Clear All</button>
+        </div>
+
+        <div class="alert alert-info text-center">
+          <strong id="totalTask">Total : 0</strong>
+          |
+          <strong id="completedTask">Completed : 0</strong>
+          |
+          <strong id="pendingTask">Pending : 0</strong>
+        </div>
+        <div class="mb-3 d-flex gap-2">
+          <button class="btn btn-dark w-100" onclick="filterTask('all')">
+            All
+          </button>
+          <button
+            class="btn btn-success w-100"
+            onclick="filterTask('completed')"
+          >
+            Completed
+          </button>
+          <button class="btn btn-warning w-100" onclick="filterTask('pending')">
+            Pending
+          </button>
+        </div>
+        <div class="table-responsive">
+          <table
+            class="table table-bordered table-hover align-middle text-center"
+          >
+            <thead class="table-dark">
+              <tr>
+                <th>Status</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Date</th>
+                <th>Edit</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
+            <tbody id="taskList"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
